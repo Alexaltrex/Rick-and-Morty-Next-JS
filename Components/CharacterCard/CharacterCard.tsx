@@ -1,0 +1,22 @@
+import {FC} from "react";
+import style from "./CharacterCard.module.scss";
+import {ICharacter} from "../../types/characters.types";
+import Link from "next/link";
+
+interface ICharacterCard {
+    character: ICharacter
+}
+
+export const CharacterCard: FC<ICharacterCard> = ({character}) => {
+    return (
+        <Link href={`/character/${character.id}`}>
+            <a className={style.characterCard}>
+                <div className={style.imgWrapper}>
+                    <img src={character.image} alt=""/>
+                </div>
+                <p>{character.name}</p>
+            </a>
+        </Link>
+
+    )
+}

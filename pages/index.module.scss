@@ -1,0 +1,7 @@
+@import "../assets/styles/app.scss";
+
+.index {
+  @include center();
+
+  height: 200vh;
+}

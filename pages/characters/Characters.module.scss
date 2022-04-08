@@ -1,0 +1,14 @@
+@import "../../assets/styles/app.scss";
+
+.characters {
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin-top: 10px;
+    }
+}

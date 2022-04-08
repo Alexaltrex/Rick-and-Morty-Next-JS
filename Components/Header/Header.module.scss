@@ -1,0 +1,81 @@
+@import "../../assets/styles/app.scss";
+
+.header {
+  background: royalblue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  z-index: 800;
+  padding: 0 20px;
+  transition: 0.3s;
+
+  @include desktop() {
+    height: 60px;
+    padding: 0 30px;
+  }
+
+  &_showMenu {
+    background: #FFF;
+  }
+
+  .logo {
+    text-decoration: none;
+
+    img {
+      display: block;
+      height: 35px;
+
+      @include desktop() {
+        height: 55px;
+      }
+    }
+  }
+
+  .burgerBtn {
+    @include onlyMobile(flex) {
+      color: #FFF;
+      transition: 0.3s;
+    }
+
+    &_showBurgerMenu {
+      color: #000000;
+    }
+  }
+
+  .links {
+    @include onlyDesktop(flex) {
+      align-items: center;
+
+      .link {
+        @include PermanentMarker();
+        font-size: 24px;
+        text-decoration: none;
+        color: #FFF;
+        transition: 0.3s;
+
+        &:hover {
+          color: #CCC;
+        }
+
+        &_active {
+          color: lime;
+
+          &:hover {
+            color: lime;
+          }
+        }
+
+        &:not(:first-child) {
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+
+}
