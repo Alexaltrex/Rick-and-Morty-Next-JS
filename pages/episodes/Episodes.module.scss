@@ -1,3 +1,30 @@
+@import "../../assets/styles/app.scss";
+
 .episodes {
 
+  .episodesList {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .episodesListItem {
+      padding: 5px 10px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+
+      @include desktop() {
+        font-size: 18px;
+      }
+
+      &:nth-child(odd) {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      &:hover {
+        color: crimson;
+      }
+    }
+
+  }
 }

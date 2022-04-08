@@ -1,6 +1,6 @@
 import {IInfo} from "./characters.types";
 
-export type ILocationsResponse = {
+export interface ILocationsResponse {
     info: IInfo
     results: ILocation[]
 }

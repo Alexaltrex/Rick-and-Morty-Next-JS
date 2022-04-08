@@ -28,7 +28,7 @@ const LocationItem: NextPage<ILocationItem> = ({
     console.log(count);
 
     return (
-        <MainLayout headTitle="Rick and Morty | Location">
+        <MainLayout headTitle={`Rick and Morty | ${location.name}`}>
             <div className={style.locationItem}>
 
                 <NavigateBlock onPrevClick={() => router.push(`/location/${location.id - 1}`)}
@@ -76,7 +76,7 @@ interface IParams extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps = async (context) => {
     const {id} = context.params as IParams;
     const location = await locationsAPI.getById(Number(id));
-    const {info} = await charactersAPI.getAll();
+    const {info} = await locationsAPI.getAll();
 
     // получение всех характеров в локации
     const arrayOfIds = location.residents.map(resident => resident.split("https://rickandmortyapi.com/api/character/")[1]);

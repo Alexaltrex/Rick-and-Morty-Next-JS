@@ -15,9 +15,6 @@ export const ListOfResidents: FC<IListOfResidents> = ({
                                                           label,
                                                           className
                                                       }) => {
-    //List of characters who have been seen in the episode
-    //List of character who have been seen in the location
-
     return (
         <div className={clsx(style.listOfResidents, className && className)}>
             <div className={style.info}>

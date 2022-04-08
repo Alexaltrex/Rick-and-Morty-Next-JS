@@ -28,16 +28,20 @@ export const NavigateBlock: FC<INavigateBlock> = ({
                     startIcon={<ArrowBackIosIcon/>}
                     onClick={onPrevClick}
                     disabled={prevDisabled}
+                    className={style.btn}
             >
-                {`prev ${btnLabel}`}
+                <span className={style.direction}>prev</span>
+                <span className={style.btnLabel}>{btnLabel}</span>
             </Button>
             <Button variant="outlined"
                     size="small"
                     endIcon={<ArrowForwardIosIcon/>}
                     onClick={onNextClick}
                     disabled={nextDisabled}
+                    className={style.btn}
             >
-                {`next ${btnLabel}`}
+                <span className={style.direction}>next</span>
+                <span className={style.btnLabel}>{btnLabel}</span>
             </Button>
         </div>
     )

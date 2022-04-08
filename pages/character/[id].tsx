@@ -5,20 +5,22 @@ import {ParsedUrlQuery} from "querystring";
 import {ICharacter} from "../../types/characters.types";
 import style from "./Character.module.scss";
 import {InfoItem} from "../../Components/InfoItem/InfoItem";
-import {Button} from "@mui/material";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import {useRouter} from "next/router";
 import {NavigateBlock} from "../../Components/NavigateBlock/NavigateBlock";
+import {episodesAPI} from "../../axios/episodes.api";
+import {IEpisode} from "../../types/episodes.api";
+import {EpisodesOfCharacter} from "../../Components/EpisodesOfCharacter/EpisodesOfCharacter";
 
 interface ICharacterItem {
     character: ICharacter
     count: number
+    episodesOfCharacter: IEpisode[]
 }
 
 const CharacterItem: NextPage<ICharacterItem> = ({
                                                      character,
-                                                     count
+                                                     count,
+                                                     episodesOfCharacter
                                                  }) => {
     console.log(character);
     console.log(count);
@@ -46,8 +48,10 @@ const CharacterItem: NextPage<ICharacterItem> = ({
                         <InfoItem label="species" value={character.species}/>
                         <InfoItem label="status" value={character.status}/>
                         {character.type && <InfoItem label="type" value={character.type}/>}
-                        <InfoItem label="location" value={character.location.name} href={`/location/${locationId}`}/>
-                        <InfoItem label="origin" value={character.origin.name} href={`/location/${originId}`}/>
+                        <InfoItem label="location" value={character.location.name} href={character.location.url ? `/location/${locationId}` : ""}/>
+                        <InfoItem label="origin" value={character.origin.name} href={character.origin.url ? `/location/${originId}` : ""}/>
+
+                        <EpisodesOfCharacter episodesOfCharacter={episodesOfCharacter}/>
                     </div>
                 </div>
 
@@ -81,10 +85,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const {id} = context.params as IParams;
     const character = await charactersAPI.getById(id);
     const {info} = await charactersAPI.getAll();
+
+    // получение всех эпизодов для персонажа
+    const arrayOfIds = character.episode.map(episode => episode.split("https://rickandmortyapi.com/api/episode/")[1]);
+    const arrayOfRequests = arrayOfIds.map(episodeId => episodesAPI.getById(Number(episodeId)));
+    const episodesOfCharacter = await Promise.all(arrayOfRequests);
+
     return {
         props: {
             character,
-            count: info.count
+            count: info.count,
+            episodesOfCharacter
         }
     }
 }
