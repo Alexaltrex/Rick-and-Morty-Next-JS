@@ -21,7 +21,9 @@ const Episodes: NextPage<IEpisodes> = ({data}) => {
                 <div className={style.episodesList}>
                     {
                         data.results.map(episode => (
-                            <Link href={`/episode/${episode.id}`}>
+                            <Link href={`/episode/${episode.id}`}
+                                  key={episode.id}
+                            >
                                 <a className={style.episodesListItem}>
                                     {`${episode.episode} - ${episode.name}`}
                                 </a>
