@@ -21,8 +21,10 @@ const Index: NextPage = () => {
         <MainLayout>
             <div className={style.index}>
                 {
-                    indexLinks.map(({label, href, src}) => (
-                        <Link href={href}>
+                    indexLinks.map(({label, href, src}, index) => (
+                        <Link href={href}
+                              key={index}
+                        >
                             <a className={style.link}>
                                 <div className={style.imageWrapper}>
                                     <Image src={src}
