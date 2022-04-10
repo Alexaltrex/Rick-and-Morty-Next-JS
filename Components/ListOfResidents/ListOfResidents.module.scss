@@ -42,7 +42,7 @@
   .residents {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 10px;
+    margin: 10px -5px 0;
     //justify-content: space-between;
 
     .characterChip {
@@ -74,6 +74,7 @@
       }
 
       .imgWrapper {
+        position: relative;
         overflow: hidden;
         width: 40px;
         height: 40px;
@@ -86,15 +87,6 @@
 
         img {
           transition: 0.3s;
-          display: block;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-
-          @include desktop() {
-            width: 50px;
-            height: 50px;
-          }
         }
       }
 

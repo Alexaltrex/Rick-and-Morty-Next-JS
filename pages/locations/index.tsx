@@ -11,7 +11,7 @@ interface ILocations {
 }
 
 const Locations: NextPage<ILocations> = ({data}) => {
-    console.log(data);
+    //console.log(data);
 
     return (
         <MainLayout headTitle="Rick and Morty | Locations">

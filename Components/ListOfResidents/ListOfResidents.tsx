@@ -3,6 +3,8 @@ import {ICharacter} from "../../types/characters.types";
 import style from "./ListOfResidents.module.scss"
 import clsx from "clsx";
 import Link from "next/link";
+import logo from "../../public/logo.png";
+import Image from "next/image";
 
 interface IListOfResidents {
     residents: ICharacter[]
@@ -30,7 +32,12 @@ export const ListOfResidents: FC<IListOfResidents> = ({
                         >
                             <a className={style.characterChip}>
                                 <div className={style.imgWrapper}>
-                                    <img src={character.image} alt=""/>
+                                    <Image src={character.image}
+                                           layout="fill"
+                                           objectFit="fill"
+                                           width={300}
+                                           height={300}
+                                    />
                                 </div>
                                 <p>{character.name}</p>
                             </a>

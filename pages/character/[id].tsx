@@ -10,6 +10,7 @@ import {NavigateBlock} from "../../Components/NavigateBlock/NavigateBlock";
 import {episodesAPI} from "../../axios/episodes.api";
 import {IEpisode} from "../../types/episodes.api";
 import {EpisodesOfCharacter} from "../../Components/EpisodesOfCharacter/EpisodesOfCharacter";
+import Image from "next/image";
 
 interface ICharacterItem {
     character: ICharacter
@@ -22,8 +23,8 @@ const CharacterItem: NextPage<ICharacterItem> = ({
                                                      count,
                                                      episodesOfCharacter
                                                  }) => {
-    console.log(character);
-    console.log(count);
+    // console.log(character);
+    // console.log(count);
     const router = useRouter();
 
     const originId = character.origin.url.split('https://rickandmortyapi.com/api/location/')[1];
@@ -41,15 +42,26 @@ const CharacterItem: NextPage<ICharacterItem> = ({
                 />
 
                 <div className={style.content}>
-                    <img src={character.image} alt=""/>
+
+                    <div className={style.imageWrapper}>
+                        <Image src={character.image}
+                               layout="fill"
+                               objectFit="fill"
+                               width={300}
+                               height={300}
+                        />
+                    </div>
+
                     <div className={style.info}>
                         <InfoItem label="name" value={character.name}/>
                         <InfoItem label="gender" value={character.gender}/>
                         <InfoItem label="species" value={character.species}/>
                         <InfoItem label="status" value={character.status}/>
                         {character.type && <InfoItem label="type" value={character.type}/>}
-                        <InfoItem label="location" value={character.location.name} href={character.location.url ? `/location/${locationId}` : ""}/>
-                        <InfoItem label="origin" value={character.origin.name} href={character.origin.url ? `/location/${originId}` : ""}/>
+                        <InfoItem label="location" value={character.location.name}
+                                  href={character.location.url ? `/location/${locationId}` : ""}/>
+                        <InfoItem label="origin" value={character.origin.name}
+                                  href={character.origin.url ? `/location/${originId}` : ""}/>
 
                         <EpisodesOfCharacter episodesOfCharacter={episodesOfCharacter}/>
                     </div>
@@ -78,9 +90,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
         fallback: false
     }
 }
+
 interface IParams extends ParsedUrlQuery {
     id: string
 }
+
 export const getStaticProps: GetStaticProps = async (context) => {
     const {id} = context.params as IParams;
     const character = await charactersAPI.getById(id);

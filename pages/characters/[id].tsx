@@ -26,7 +26,6 @@ const Characters: NextPage<ICharacters> = ({
                 <CharactersLayout pages={response.info.pages}
                                   id={id}
                 >
-
                     <div className={style.cards}>
                         {
                             response.results.map(character => (
@@ -61,9 +60,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
         fallback: false
     }
 }
+
 interface IParams extends ParsedUrlQuery {
     id: string
 }
+
 export const getStaticProps: GetStaticProps = async (context) => {
     const {id} = context.params as IParams;
     const response = await charactersAPI.getAll(id);

@@ -7,6 +7,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import {IconButton} from "@mui/material";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {selectShowBurgerMenu, setShowBurgerMenu} from "../../store/appSlice";
+import Image from "next/image";
+import logo from "../../public/logo.png";
 
 export const links = [
     {label: "characters", href: "/characters/1", slug: "characters"},
@@ -29,7 +31,12 @@ export const Header = () => {
                 <a className={style.logo}
                    onClick={() => dispatch(setShowBurgerMenu(false))}
                 >
-                    <img src="/logo.png" alt=""/>
+                    <Image src={logo}
+                           layout="fill"
+                           objectFit="fill"
+                           width={600}
+                           height={190}
+                    />
                 </a>
             </Link>
 

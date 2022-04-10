@@ -11,7 +11,7 @@ interface IEpisodes {
 }
 
 const Episodes: NextPage<IEpisodes> = ({data}) => {
-    console.log(data);
+    //console.log(data);
 
     return (
         <MainLayout headTitle="Rick and Morty | Episodes">

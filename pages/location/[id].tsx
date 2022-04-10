@@ -24,8 +24,8 @@ const LocationItem: NextPage<ILocationItem> = ({
                                                    charactersOfLocation
 }) => {
     const router = useRouter();
-    console.log(location);
-    console.log(count);
+    // console.log(location);
+    // console.log(count);
 
     return (
         <MainLayout headTitle={`Rick and Morty | ${location.name}`}>

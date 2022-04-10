@@ -26,14 +26,13 @@
 
   .logo {
     text-decoration: none;
+    position: relative;
+    width: 110px;
+    height: 35px;
 
-    img {
-      display: block;
-      height: 35px;
-
-      @include desktop() {
-        height: 55px;
-      }
+    @include desktop() {
+      width: 173px;
+      height: 55px;
     }
   }
 
