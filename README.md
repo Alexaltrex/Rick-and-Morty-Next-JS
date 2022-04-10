@@ -1,5 +1,5 @@
 # Rick-and-Morty-Next-JS
-link: https://rick-and-morty-next-azr7daswa-alexaltrex2022-gmailcom.vercel.app/
+link: https://rick-and-morty-next-js-eight.vercel.app/
 
 <img src="https://user-images.githubusercontent.com/56224288/162620125-5069a6e6-3676-481c-9777-d026d9c52651.jpg" height="150">
 <div style="display:flex;">
