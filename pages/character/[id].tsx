@@ -49,6 +49,7 @@ const CharacterItem: NextPage<ICharacterItem> = ({
                                objectFit="fill"
                                width={300}
                                height={300}
+                               alt={character.name}
                         />
                     </div>
 

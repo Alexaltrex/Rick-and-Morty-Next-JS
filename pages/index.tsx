@@ -32,6 +32,7 @@ const Index: NextPage = () => {
                                            objectFit="fill"
                                            width={400}
                                            height={400}
+                                           alt={label}
                                     />
                                 </div>
                                 <p>{label}</p>

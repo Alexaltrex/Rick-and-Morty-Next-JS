@@ -3,7 +3,6 @@ import {ICharacter} from "../../types/characters.types";
 import style from "./ListOfResidents.module.scss"
 import clsx from "clsx";
 import Link from "next/link";
-import logo from "../../public/logo.png";
 import Image from "next/image";
 
 interface IListOfResidents {
@@ -37,6 +36,7 @@ export const ListOfResidents: FC<IListOfResidents> = ({
                                            objectFit="fill"
                                            width={300}
                                            height={300}
+                                           alt={character.name}
                                     />
                                 </div>
                                 <p>{character.name}</p>

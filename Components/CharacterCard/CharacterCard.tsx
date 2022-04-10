@@ -18,6 +18,7 @@ export const CharacterCard: FC<ICharacterCard> = ({character}) => {
                            objectFit="fill"
                            width={300}
                            height={300}
+                           alt={character.name}
                     />
                 </div>
                 <p>{character.name}</p>

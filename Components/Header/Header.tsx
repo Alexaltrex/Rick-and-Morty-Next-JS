@@ -36,6 +36,7 @@ export const Header = () => {
                            objectFit="fill"
                            width={600}
                            height={190}
+                           alt="logo"
                     />
                 </a>
             </Link>

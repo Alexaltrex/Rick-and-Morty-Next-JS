@@ -10,6 +10,7 @@ export default function Custom404() {
                 <Image src={src404}
                        width={200}
                        height={171}
+                       alt="404"
                 />
 
                 <h1>Page Not Found</h1>
