@@ -5,6 +5,10 @@
   flex-direction: column;
   //align-items: center;
 
+  .inner {
+    @include inner();
+  }
+
   .cards {
     margin: 10px -5px 0;
     display: flex;

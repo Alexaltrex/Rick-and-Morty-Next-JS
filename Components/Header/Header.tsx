@@ -27,45 +27,47 @@ export const Header = () => {
             [style.header]: true,
             [style.header_showMenu]: showBurgerMenu,
         })}>
-            <Link href="/">
-                <a className={style.logo}
-                   onClick={() => dispatch(setShowBurgerMenu(false))}
+            <div className={style.inner}>
+                <Link href="/">
+                    <a className={style.logo}
+                       onClick={() => dispatch(setShowBurgerMenu(false))}
+                    >
+                        <Image src={logo}
+                               layout="fill"
+                               objectFit="fill"
+                               width={600}
+                               height={190}
+                               alt="logo"
+                        />
+                    </a>
+                </Link>
+
+                <IconButton size="small"
+                            className={clsx({
+                                [style.burgerBtn]: true,
+                                [style.burgerBtn_showBurgerMenu]: showBurgerMenu,
+                            })}
+                            onClick={() => dispatch(setShowBurgerMenu(!showBurgerMenu))}
                 >
-                    <Image src={logo}
-                           layout="fill"
-                           objectFit="fill"
-                           width={600}
-                           height={190}
-                           alt="logo"
-                    />
-                </a>
-            </Link>
+                    {showBurgerMenu ? <CloseIcon/> : <MenuIcon/>}
+                </IconButton>
 
-            <IconButton size="small"
-                        className={clsx({
-                            [style.burgerBtn]: true,
-                            [style.burgerBtn_showBurgerMenu]: showBurgerMenu,
-                        })}
-                        onClick={() => dispatch(setShowBurgerMenu(!showBurgerMenu))}
-            >
-                {showBurgerMenu ? <CloseIcon/> : <MenuIcon/>}
-            </IconButton>
+                <nav className={style.links}>
+                    {
+                        links.map(({label, href, slug}, index) => (
+                            <Link key={index} href={href}>
+                                <a className={clsx({
+                                    [style.link]: true,
+                                    [style.link_active]: router.pathname.includes(slug),
+                                })}>
+                                    {label}
+                                </a>
+                            </Link>
+                        ))
+                    }
+                </nav>
+            </div>
 
-
-            <nav className={style.links}>
-                {
-                    links.map(({label, href, slug}, index) => (
-                        <Link key={index} href={href}>
-                            <a className={clsx({
-                                [style.link]: true,
-                                [style.link_active]: router.pathname.includes(slug),
-                            })}>
-                                {label}
-                            </a>
-                        </Link>
-                    ))
-                }
-            </nav>
 
         </header>
     )

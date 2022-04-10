@@ -23,20 +23,23 @@ const Characters: NextPage<ICharacters> = ({
     return (
         <MainLayout headTitle="Rick and Morty | Characters">
             <section className={style.characters}>
-                <CharactersLayout pages={response.info.pages}
-                                  id={id}
-                >
-                    <div className={style.cards}>
-                        {
-                            response.results.map(character => (
-                                    <CharacterCard key={character.id}
-                                                   character={character}
-                                    />
+                <div className={style.inner}>
+                    <CharactersLayout pages={response.info.pages}
+                                      id={id}
+                    >
+                        <div className={style.cards}>
+                            {
+                                response.results.map(character => (
+                                        <CharacterCard key={character.id}
+                                                       character={character}
+                                        />
+                                    )
                                 )
-                            )
-                        }
-                    </div>
-                </CharactersLayout>
+                            }
+                        </div>
+                    </CharactersLayout>
+                </div>
+
             </section>
         </MainLayout>
     )

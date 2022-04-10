@@ -33,41 +33,40 @@ const CharacterItem: NextPage<ICharacterItem> = ({
     return (
         <MainLayout headTitle={`Rick and Morty | ${character.name}`}>
             <section className={style.character}>
+                <div className={style.inner}>
+                    <NavigateBlock onPrevClick={() => router.push(`/character/${character.id - 1}`)}
+                                   onNextClick={() => router.push(`/character/${character.id + 1}`)}
+                                   prevDisabled={character.id <= 1}
+                                   nextDisabled={character.id >= count}
+                                   btnLabel="character"
+                    />
 
-                <NavigateBlock onPrevClick={() => router.push(`/character/${character.id - 1}`)}
-                               onNextClick={() => router.push(`/character/${character.id + 1}`)}
-                               prevDisabled={character.id <= 1}
-                               nextDisabled={character.id >= count}
-                               btnLabel="character"
-                />
+                    <div className={style.content}>
+                        <div className={style.imageWrapper}>
+                            <Image src={character.image}
+                                   layout="fill"
+                                   objectFit="fill"
+                                   width={300}
+                                   height={300}
+                                   alt={character.name}
+                            />
+                        </div>
 
-                <div className={style.content}>
+                        <div className={style.info}>
+                            <InfoItem label="name" value={character.name}/>
+                            <InfoItem label="gender" value={character.gender}/>
+                            <InfoItem label="species" value={character.species}/>
+                            <InfoItem label="status" value={character.status}/>
+                            {character.type && <InfoItem label="type" value={character.type}/>}
+                            <InfoItem label="location" value={character.location.name}
+                                      href={character.location.url ? `/location/${locationId}` : ""}/>
+                            <InfoItem label="origin" value={character.origin.name}
+                                      href={character.origin.url ? `/location/${originId}` : ""}/>
 
-                    <div className={style.imageWrapper}>
-                        <Image src={character.image}
-                               layout="fill"
-                               objectFit="fill"
-                               width={300}
-                               height={300}
-                               alt={character.name}
-                        />
-                    </div>
-
-                    <div className={style.info}>
-                        <InfoItem label="name" value={character.name}/>
-                        <InfoItem label="gender" value={character.gender}/>
-                        <InfoItem label="species" value={character.species}/>
-                        <InfoItem label="status" value={character.status}/>
-                        {character.type && <InfoItem label="type" value={character.type}/>}
-                        <InfoItem label="location" value={character.location.name}
-                                  href={character.location.url ? `/location/${locationId}` : ""}/>
-                        <InfoItem label="origin" value={character.origin.name}
-                                  href={character.origin.url ? `/location/${originId}` : ""}/>
-
-                        <EpisodesOfCharacter episodesOfCharacter={episodesOfCharacter}/>
+                            <EpisodesOfCharacter episodesOfCharacter={episodesOfCharacter}/>
+                        </div>
                     </div>
                 </div>
-
             </section>
         </MainLayout>
     )

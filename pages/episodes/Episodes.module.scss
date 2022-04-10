@@ -1,8 +1,10 @@
 @import "../../assets/styles/app.scss";
 
 .episodes {
+  @include inner();
 
   .episodesList {
+    background: #FFF;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -10,8 +12,9 @@
     .episodesListItem {
       padding: 5px 10px;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 14px;
       transition: 0.3s;
+      color: midnightblue;
 
       @include desktop() {
         font-size: 18px;
@@ -19,6 +22,7 @@
 
       &:nth-child(odd) {
         background: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
       }
 
       &:hover {
