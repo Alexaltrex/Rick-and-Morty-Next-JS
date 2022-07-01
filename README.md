@@ -1,5 +1,5 @@
 # Rick-and-Morty-Next-JS
-link: https://rick-and-morty-next-js-eight.vercel.app/
+Link: https://rick-and-morty-next-js-eight.vercel.app/
 
 <img src="https://user-images.githubusercontent.com/56224288/162620125-5069a6e6-3676-481c-9777-d026d9c52651.jpg" height="150">
 <div style="display:flex;">
@@ -7,10 +7,10 @@ link: https://rick-and-morty-next-js-eight.vercel.app/
   <img src="https://user-images.githubusercontent.com/56224288/162620128-12fdc171-38d5-41d5-a3bb-cedfd11d5397.jpg" height="150">
 </div>
 
-# Description
+## Description
 Web application with a server side rendering created by Next.js, with adaptive responsive design.
 
-# Development
+## Development
 * app based on Next.js and React
 * http client - axios
 * data typing - typescript
